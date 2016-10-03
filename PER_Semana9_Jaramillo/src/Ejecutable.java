@@ -11,5 +11,6 @@ public class Ejecutable extends PApplet {
 	
 	public void draw(){
 		background(255);
+		log.pintar();
 	}
 }

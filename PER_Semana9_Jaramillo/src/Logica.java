@@ -21,16 +21,19 @@ public class Logica implements Observer {
 
 	public void pintar(){
 		app.noStroke();
-		for (Bola bola: bolas){
-			app.fill(bola.getR(), bola.getG(), bola.getB());
-			app.ellipse(bola.getX(), bola.getY(), bola.getTam(), bola.getTam());
+		if(bolas!=null){
+			for (Bola bola : bolas) {
+				app.fill(bola.getR(), bola.getG(), bola.getB());
+				app.ellipse(bola.getX(), bola.getY(), bola.getTam(), bola.getTam());
+			}
 		}
 	}
 	
 	@Override
-	public void update(Observable arg0, Object arg1) {
-		// TODO Auto-generated method stub
-		
+	public void update(Observable obs, Object obj) {
+		Bola bola = (Bola) obj;
+		bd.agregar(bola);
+		bolas.add(bola);
 	}
 	
 }
