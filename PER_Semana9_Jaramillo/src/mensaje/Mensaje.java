@@ -1,8 +1,8 @@
-package dibujable;
+package mensaje;
 
 import java.io.Serializable;
 
-public class Bola implements Serializable {
+public class Mensaje implements Serializable {
 
 	/**
 	 * 
@@ -10,7 +10,7 @@ public class Bola implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private int x,y,tam,r,g,b;
 
-    public Bola(int x, int y, int tam, int r, int g , int  b ){
+    public Mensaje(int x, int y, int tam, int r, int g , int  b ){
         this.x=x;
         this.y=y;
         this.tam=tam;

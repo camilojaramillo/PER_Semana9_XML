@@ -6,7 +6,7 @@ import java.net.InetAddress;
 import java.net.MulticastSocket;
 import java.util.Observable;
 
-import dibujable.Bola;
+import mensaje.Mensaje;
 
 public class Comunicacion extends Observable implements Runnable {
 
@@ -45,15 +45,16 @@ public class Comunicacion extends Observable implements Runnable {
 				Object recibir = deserializar(pack.getData());
 				
 				if(recibir != null) {
-					if (recibir instanceof Bola){
-						Bola bola = (Bola) recibir;
+					if (recibir instanceof Mensaje){
+						
+						Mensaje bola = (Mensaje) recibir;
 						int x = bola.getX();
 						int y = bola.getY();
 						int tam = bola.getTam();
 						int r = bola.getR();
 						int g = bola.getG();
 						int b = bola.getB();
-						
+						System.out.println(r);
 						setChanged();
 						notifyObservers(bola);
 						clearChanged();

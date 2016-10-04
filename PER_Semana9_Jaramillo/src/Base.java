@@ -6,7 +6,7 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import org.xml.sax.SAXException;
 
-import dibujable.Bola;
+import mensaje.Mensaje;
 import processing.data.XML;
 
 public class Base {
@@ -29,11 +29,11 @@ public class Base {
 				e.printStackTrace();
 			}
 		} else {
-			xml = new XML ("bola");
+			xml = new XML ("bolas");
 		}
 	}
 	
-	public void agregar (Bola b){
+	public void agregar (Mensaje b){
 		XML bolas = new XML ("bola");
 		bolas.setInt("x", b.getX());
 		bolas.setInt("y",b.getY());
@@ -46,13 +46,14 @@ public class Base {
 		
 		Runtime.getRuntime().addShutdownHook(new Thread(){
 			public void run(){
+				//System.out.println("Cerrando la app");
 				xml.save(new File(ruta));
 			}	
 		});
 	}
 	
-	public ArrayList<Bola> bolasNuevas(){
-		ArrayList<Bola> list = new ArrayList<Bola>();
+	public ArrayList<Mensaje> bolasNuevas(){
+		ArrayList<Mensaje> list = new ArrayList<Mensaje>();
 		XML[] bolas = xml.getChildren("bola");
 		
 		for(int i = 0; i < bolas.length; i++) {
@@ -63,7 +64,7 @@ public class Base {
 			int g = bolas[i].getInt("g");
 			int b = bolas[i].getInt("b");
 			
-			Bola bolasNuevas = new Bola (x,y,tam,r,g,b);
+			Mensaje bolasNuevas = new Mensaje (x,y,tam,r,g,b);
 			list.add(bolasNuevas);
 		}
 		return list;
